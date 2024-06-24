@@ -19,6 +19,7 @@ function clearFields(){
     document.querySelector("#firstName").value="";
     document.querySelector("#lastName").value="";
     document.querySelector("#rollNo").value="";
+    document.querySelector("#hostEmail").value="";
 }
 
 //Add Data
@@ -29,9 +30,10 @@ document.querySelector("#student-form").addEventListener("submit",(e)=>{
     const firstName=document.querySelector("#firstName").value;
     const lastName=document.querySelector("#lastName").value;
     const rollNo=document.querySelector("#rollNo").value;
+    const hostEmail=document.querySelector("#hostEmail").value;
     
     //validate
-    if(firstName==""||lastName==""||rollNo==""){
+    if(firstName==""||lastName==""||rollNo==""||hostEmail==""){
         showAlert("Please fill in all fields","danger");
     }
     else{
@@ -64,11 +66,12 @@ if(target.classList.contains("edit")){
     document.querySelector("#firstName").value=selectedRow.children[0].textContent;
     document.querySelector("#lastName").value=selectedRow.children[1].textContent;
     document.querySelector("#rollNo").value=selectedRow.children[0].textContent;
+    document.querySelector("#hostEmail").value=selectedRow.children[1].textContent;
 }
 });
 
 //Delete Data
-document.querySelector("#sutdent-list").addEventListener("click",(e)=>{
+document.querySelector("#student-list").addEventListener("click",(e)=>{
 target=e.target;
 if(target.classList.contains("delete")){
     target.parentElement.parentElement.remove();
