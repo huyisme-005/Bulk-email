@@ -41,7 +41,7 @@ document.querySelector("#student-form").addEventListener("submit",(e)=>{
             const list=document.querySelector("#student-list");
             const row=document.createElement("tr");
 
-            row.innerHTML='<td>${firstName}</td><td>${lastName}</td><td>${rollNo}</td><td><a href="#" class="btn btn-warning btn-sm edit">Edit</a><a href="#" class="btn btn-danger btn-sm delete">Delete</a>'
+            row.innerHTML='<td>${firstName}</td><td>${lastName}</td><td>${rollNo}</td><td>${hostEmail}</td><td><a href="#" class="btn btn-warning btn-sm edit">Edit</a><a href="#" class="btn btn-danger btn-sm delete">Delete</a>'
             list.appendChild(row);
             selectedRow=null;
             showAlert("Student Added","success");
