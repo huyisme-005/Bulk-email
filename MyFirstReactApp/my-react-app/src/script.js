@@ -51,6 +51,7 @@ document.querySelector("#student-form").addEventListener("submit",(e)=>{
             selectedRow.children[0].textContent=firstName;
             selectedRow.children[1].textContent=lastName;
             selectedRow.children[2].textContent=rollNo;
+            selectedRow.children[3].textContent=hostEmail;
             selectedRow=null;
             showAlert("Student Info Edited","info");
         }
