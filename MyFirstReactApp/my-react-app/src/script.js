@@ -65,6 +65,14 @@ app.post('/upload', async (req, res) => {
           origin: 'http://localhost:3001',
           credentials: true, 
         }));
+        app.listen(port, () => {
+            console.log(`Server running on http://localhost:${port}`);
+          });
+          
+          app.use(cors({
+              origin: 'http://localhost:3001',
+              credentials: true, 
+            }));
 
 //show alerts
 function showAlert(message,className){
