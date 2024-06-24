@@ -33,7 +33,7 @@ app.post('/upload', async (req, res) => {
 
   const createZohoAlias = async (firstName, lastName, alias) => {
     const zohoApiUrl = 'https://www.zohoapis.com/your_api_endpoint'; // Endpoint ???
-    const apiKey = 'your_zoho_api_key'; // zoho api key >> cần generate key để đe
+    const apiKey = 'your_zoho_api_key'; // zoho api key >> we need to generate key
     
       const response = await axios.post(
         zohoApiUrl,
