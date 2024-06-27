@@ -3,35 +3,29 @@ import './App.css';
 import {Button} from 'antd';
 import defaultExport  from './table.js'
 import Table from './table.js';
+import {React} from 'react';
 
 
 async function App() {
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      name:"Name",
+      selector:row=>row.name
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      name:"Email",
+      selector:row=>row.email
+    },
+    {
+      name:"Phone number",
+      selector:row=>row.phone_number
     },
     
   ];
+const url="https://docs.sheetjs.com/executive.json";
 
-const data = [
-    {
-      key: '1',
-      name: 'Test1',
-      age: 1,
-    },
-    {
-      key: '2',
-      name: 'Test2',
-      age: 2,
-    },
-  ];
+const data = await (await fetch(url)).json();
+
 
 
  
