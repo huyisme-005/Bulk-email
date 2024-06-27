@@ -1,6 +1,7 @@
-import express from 'express';
-import fileUpload from 'express-fileupload';
-import xlsx from 'xlsx';
+const express = require('express');
+const fileUpload = require('express-fileupload');
+const xlsx = require('xlsx');
+const axios = require('axios');
 const app=express();
 const port=3000;
 var selectedRow=null;
@@ -92,22 +93,21 @@ function showAlert(message,className){
 function clearFields(){
     document.querySelector("#firstName").value="";
     document.querySelector("#lastName").value="";
-    document.querySelector("#rollNo").value="";
+    //document.querySelector("#rollNo").value="";
     document.querySelector("#hostEmail").value="";
 }
 
 //Add Data
-document.querySelector("#student-form").addEventListener("submit",(e)=>{
+document.querySelector("#employee-form").addEventListener("submit",(e)=>{
     e.preventDefault();
 
     //get form values
     const firstName=document.querySelector("#firstName").value;
     const lastName=document.querySelector("#lastName").value;
-    const rollNo=document.querySelector("#rollNo").value;
     const hostEmail=document.querySelector("#hostEmail").value;
     
     //validate
-    if(firstName==""||lastName==""||rollNo==""||hostEmail==""){
+    if(firstName==""||lastName==""||hostEmail==""){
         showAlert("Please fill in all fields","danger");
     }
     else{
@@ -115,41 +115,39 @@ document.querySelector("#student-form").addEventListener("submit",(e)=>{
             const list=document.querySelector("#student-list");
             const row=document.createElement("tr");
 
-            row.innerHTML='<td>${firstName}</td><td>${lastName}</td><td>${rollNo}</td><td>${hostEmail}</td><td><a href="#" class="btn btn-warning btn-sm edit">Edit</a><a href="#" class="btn btn-danger btn-sm delete">Delete</a>'
+            row.innerHTML='<td>${firstName}</td><td>${lastName}</td><td>${hostEmail}</td><td><a href="#" class="btn btn-warning btn-sm edit">Edit</a><a href="#" class="btn btn-danger btn-sm delete">Delete</a>'
             list.appendChild(row);
             selectedRow=null;
-            showAlert("Student Added","success");
+            showAlert("Employee Added","success");
         }
          
         else{
             selectedRow.children[0].textContent=firstName;
             selectedRow.children[1].textContent=lastName;
-            selectedRow.children[2].textContent=rollNo;
-            selectedRow.children[3].textContent=hostEmail;
+            selectedRow.children[2].textContent=hostEmail;
             selectedRow=null;
-            showAlert("Student Info Edited","info");
+            showAlert("Employee Info Edited","info");
         }
        clearFields();
     }
 });
 
 //Edit Data
-document.querySelector("#student-list").addEventListener("click",(e)=>{
+document.querySelector("#employee-list").addEventListener("click",(e)=>{
 target=e.target;
 if(target.classList.contains("edit")){
     selectedRow=target.parentElement.parentElement;
     document.querySelector("#firstName").value=selectedRow.children[0].textContent;
     document.querySelector("#lastName").value=selectedRow.children[1].textContent;
-    document.querySelector("#rollNo").value=selectedRow.children[0].textContent;
-    document.querySelector("#hostEmail").value=selectedRow.children[1].textContent;
+    document.querySelector("#hostEmail").value=selectedRow.children[0].textContent;
 }
 });
 
 //Delete Data
-document.querySelector("#student-list").addEventListener("click",(e)=>{
+document.querySelector("#employee-list").addEventListener("click",(e)=>{
 target=e.target;
 if(target.classList.contains("delete")){
     target.parentElement.parentElement.remove();
-    showAlert("Student Data Deleted","danger");
+    showAlert("Employee Data Deleted","danger");
 }
 });

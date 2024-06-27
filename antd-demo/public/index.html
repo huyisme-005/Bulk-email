@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -24,11 +26,10 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Ant design table</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="table-container"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +40,30 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>  
+    src="./bundle.js";
+      async function generateTable() {  
+      try {  
+      var link=prompt('Enter a link to data');
+      const response = await fetch(link);  
+      const data = await response.json();  
+      let table = '<table>';  
+      table += '<tr><th>Name</th><th>Email</th><th>Phone</th></tr>';  
+      data.forEach(item => {  
+      table += `<tr><td>${item.name}</td><td>${[item.name.split(" ")[0]+item.id+'@platihub.com'
+      ,item.name.split(" ")[1]+item.zipcode.split("-")[0]+'@platihub.com',
+    item.street.join(" ")[0]+'@platihub.com']}</td><td>${item.phone}</td></tr>`;  
+      });  
+      table += '</table>';  
+      const tableContainer = document.getElementById('table-container');  
+      tableContainer.innerHTML = table;  
+      } catch (error) {  
+      console.error(error);  
+      }  
+      }  
+        
+      generateTable();  
+      </script>  
+    render(<App />, document.getElementById('root'))
   </body>
 </html>
