@@ -50,9 +50,7 @@
       let table = '<table>';  
       table += '<tr><th>Name</th><th>Email</th><th>Phone</th></tr>';  
       data.forEach(item => {  
-      table += `<tr><td>${item.name}</td><td>${[item.name.split(" ")[0]+item.id+'@platihub.com'
-      ,item.name.split(" ")[1]+item.zipcode.split("-")[0]+'@platihub.com',
-    item.street.join(" ")[0]+'@platihub.com']}</td><td>${item.phone}</td></tr>`;  
+      table += `<tr><td>${item.name}</td><td>${item.email}</td><td>${item.phone}</td></tr>`;  
       });  
       table += '</table>';  
       const tableContainer = document.getElementById('table-container');  
