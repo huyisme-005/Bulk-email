@@ -9,3 +9,4 @@ data.forEach((item) => {
 ,item["Birthplace"].split(", ")[2].split(" ").join("_")+item["Phone number"].split("-")[1]
 +"@platihub.com"];
 });
+console.log(JSON.stringify(data));
