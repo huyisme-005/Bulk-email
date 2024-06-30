@@ -1,8 +1,9 @@
 // script.js
 //import user from "./sample.json" assert { type: 'json' };
 //console.log(user)
-var filename=prompt("Input a filename:");
-const content=require("./sample.json");
+const filename=prompt("Input a filename:");
+//const content=require("./sample.json");
+const content=require(filename);
 var data=JSON.parse(JSON.stringify(content));
 data.forEach((item) => {
     item["Email aliases"]=[item["First name"]+item["Address"].split(", ")[0].split(" ").join("")
