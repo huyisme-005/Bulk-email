@@ -2,6 +2,7 @@
 //import user from "./sample.json" assert { type: 'json' };
 //console.log(user)
 //const filename=prompt("Input a json filename:");
+import React, { useEffect } from 'react';
 const content=require("./sample.json");
 //const content=require(filename);
 var data=JSON.parse(JSON.stringify(content));
