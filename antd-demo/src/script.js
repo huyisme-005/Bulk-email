@@ -4,9 +4,31 @@
 const content=require("./sample.json");
 var data=JSON.parse(JSON.stringify(content));
 data.forEach((item) => {
-    item["Email aliases"]=[item["First name"]+item["Address"].split(", ")[0].join("")
-+"@platihub.com",item["Last name"]+item["Birthplace"].split(", ")[0].join("")+"@platihub.com"
-,item["Birthplace"].split(", ")[2].split(" ").join("_")+item["Phone number"].split("-")[1]
+    item["Email aliases"]=[item["First name"]+item["Address"].split(", ")[0].split(" ").join("")
++"@platihub.com",item["Last name"]+item["Birthplace"].split(", ")[1].split(" ").join("_")+"@platihub.com"
+,item["Last name"]+"."+item["First name"]+item["Phone number"].split("-")[1]
 +"@platihub.com"];
 });
 console.log(JSON.stringify(data));
+document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
+
+const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+const EXCEL_EXTENSION = '.xlsx';
+
+function downloadAsExcel(){
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = {
+        Sheets: {
+            'data' : worksheet
+        },
+        SheetNames: ['data']
+    };
+    const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
+    console.log(excelBuffer);
+    saveAsExcel(excelBuffer, 'data_template');
+}
+
+function saveAsExcel(buffer, filename){
+    const data = new Blob([buffer], {type: EXCEL_TYPE});
+    saveAs(data, filename+EXCEL_EXTENSION);
+}
