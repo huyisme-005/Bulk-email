@@ -167,6 +167,5 @@ var saveAs = _global.saveAs || (
 _global.saveAs = saveAs.saveAs = saveAs
 
 if (typeof module !== 'undefined') {
-  module.exports = saveAs;
+  module.export = saveAs;
 }
-export default saveAs;
