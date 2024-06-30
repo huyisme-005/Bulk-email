@@ -2,6 +2,8 @@
 //import user from "./sample.json" assert { type: 'json' };
 //console.log(user)
 //const filename=prompt("Input a json filename:");
+"use client";
+import React,{useEffect} from react;
 const content=require("./sample.json");
 //const content=require(filename);
 var data=JSON.parse(JSON.stringify(content));
@@ -12,7 +14,10 @@ data.forEach((item) => {
 +"@platihub.com"];
 });
 console.log(JSON.stringify(data));
-window.document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
+useEffect(()=>{
+    window.document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
+},[]);
+
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
