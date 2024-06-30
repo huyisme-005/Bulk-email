@@ -13,7 +13,7 @@ data.forEach((item) => {
 +"@platihub.com"];
 });
 console.log(JSON.stringify(data));
-document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
+window.document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
