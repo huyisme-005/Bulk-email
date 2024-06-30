@@ -30,5 +30,5 @@ function downloadAsExcel(){
 
 function saveAsExcel(buffer, filename){
     const data = new Blob([buffer], {type: EXCEL_TYPE});
-    saveAs(data, filename+EXCEL_EXTENSION);
+    saveAs(data, filename+new Date().getTime()+EXCEL_EXTENSION);
 }
