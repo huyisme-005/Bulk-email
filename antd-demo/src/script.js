@@ -4,7 +4,7 @@
 //const filename=prompt("Input a json filename:");
 "use client";
 import {useEffect} from "react";
-import {saveAs} from "/.filesaver.js";
+import {saveAs} from "./filesaver.js";
 import content from "./sample.json" with {type:"json"};
 //const content=require(filename);
 var data=JSON.parse(JSON.stringify(content));
