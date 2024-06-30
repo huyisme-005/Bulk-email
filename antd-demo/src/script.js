@@ -1,7 +1,7 @@
 // script.js
 //import user from "./sample.json" assert { type: 'json' };
 //console.log(user)
-var filename=readLine("Input a filename:");
+var filename=prompt("Input a filename:");
 const content=require("./sample.json");
 var data=JSON.parse(JSON.stringify(content));
 data.forEach((item) => {
