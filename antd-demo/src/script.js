@@ -3,7 +3,7 @@
 //console.log(user)
 //const filename=prompt("Input a json filename:");
 "use client";
-import {useEffect} from "react";
+import React,{useEffect} from "react";
 import content from "./sample.json" with {type:"json"};
 //const content=require(filename);
 var data=JSON.parse(JSON.stringify(content));
