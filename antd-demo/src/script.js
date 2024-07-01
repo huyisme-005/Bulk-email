@@ -15,11 +15,8 @@ data.forEach((item) => {
 +"@platihub.com"];
 });
 console.log(JSON.stringify(data));
-function activateDocument(){
-useEffect(()=>{
-    window.document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
-},[])};
-activateDocument();
+
+//activateDocument();
 
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -37,9 +34,20 @@ function downloadAsExcel(){
     console.log(excelBuffer);
     saveAsExcel(excelBuffer, 'data_template');
 }
+function App(){
+    useEffect(()=>{
+        window.document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
+    },[]);
+    const saveAsExcel = (buffer, filename)=>{
+        const data = new Blob([buffer], {type: EXCEL_TYPE});
+        saveAs(data, filename+new Date().getTime()+EXCEL_EXTENSION);
+    }
+    return (
+        <div>
+          <pre id="json"></pre>
+          <button onClick={downloadAsExcel}>Download as Excel</button>
+        </div>
+      );
+};
 
-function saveAsExcel(buffer, filename){
-    const data = new Blob([buffer], {type: EXCEL_TYPE});
-    saveAs(data, filename+new Date().getTime()+EXCEL_EXTENSION);
-}
 //downloadAsExcel();
