@@ -25,7 +25,10 @@ console.log(JSON.stringify(data));
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
-
+const saveAsExcel = (buffer, filename)=>{
+    const data = new Blob([buffer], {type: EXCEL_TYPE});
+    saveAs(data, filename+new Date().getTime()+EXCEL_EXTENSION);
+}
 function downloadAsExcel(){
     const worksheet = XLSX.utils.json_to_sheet(data);
     const workbook = {
@@ -42,10 +45,12 @@ function App(){
     useEffect(()=>{
         window.document.getElementById("json").innerHTML = JSON.stringify(data, undefined, 4);
     },[]);
+    /*** 
     const saveAsExcel = (buffer, filename)=>{
         const data = new Blob([buffer], {type: EXCEL_TYPE});
         saveAs(data, filename+new Date().getTime()+EXCEL_EXTENSION);
     }
+        ***/
     return (
         <div>
           <pre id="json"></pre>
