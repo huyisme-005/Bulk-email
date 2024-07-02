@@ -3,9 +3,13 @@
 //console.log(user)
 //const filename=prompt("Input a json filename:");
 "use client";
-import {useEffect} from "react";
+import React,{useEffect} from "react";
 import saveAs from "./filesaver.js";
 import content from "./sample.json" with {type:"json"};
+import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client'
+
+
 //const content=require(filename);
 var data=JSON.parse(JSON.stringify(content));
 data.forEach((item) => {
@@ -49,5 +53,7 @@ function App(){
         </div>
       );
 };
+//ReactDOM.render(<App />, document.getElementById("root"));
+createRoot(document.getElementById('root')).render(<App />);
 
 //downloadAsExcel();
